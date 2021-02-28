@@ -67,11 +67,18 @@ hist(Total.steps.day$total.steps,
 
 mean.steps<-mean(Total.steps.day$total.steps)
 mean.steps
+```
+```
+## [1] 9354.23
+```
+```r
 median.steps<-median(Total.steps.day$total.steps)
 median.steps
 ```
-
-The mean of the total number of steps taken per day is `r mean.steps` and the median is `r median.steps`
+```
+## [1] 10395
+```
+The mean of the total number of steps taken per day is `9354.23` and the median is `10395`
 
 # What is the average daily activity pattern?
 
@@ -94,11 +101,22 @@ plot(average.steps.by.interval$interval, average.steps.by.interval$average.steps
 
 max.step<-max(average.steps.by.interval$average.steps)
 max.step
+```
+```
+## [1] 206.1698
+```
+```r
 interval.max.step<-average.steps.by.interval[which.max(average.steps.by.interval$average.steps),1]
 interval.max.step
 ```
+```
+## # A tibble: 1 x 1
+##   interval
+##      <int>
+## 1      835
+```
 
-The interval with most steps is `r interval.max.step` , the max number of steps is `r max.step`
+The interval with most steps is `835` , the max number of steps is `206.1698`
 
 # Imputing missing values
 
@@ -109,7 +127,9 @@ The interval with most steps is `r interval.max.step` , the max number of steps 
 total.na<-sum(is.na(DatActivity$steps))
 total.na
 ```
-
+```
+## [1] 2304
+```
 the total number of missing values in the data set is `r total.na`
 
 ```r
@@ -163,11 +183,18 @@ The histogram of the new data set with the missing data filled in is more symmet
 
 mean.steps.fill<-mean(Total.steps.day.fill$total.steps)
 mean.steps.fill
+```
+```
+## [1] 10766.19
+```
+```
 median.steps.fill<-median(Total.steps.day.fill$total.steps)
 median.steps.fill
 ```
-
-The mean total number of steps taken per day is `r mean.steps.fill` and the median is `r median.steps.fill`, these values differ from the estimates from the first part of the assignment
+```
+## [1] 10766.19
+```
+The mean total number of steps taken per day is `10766.19` and the median is `10766.19`, these values differ from the estimates from the first part of the assignment
 
 # Are there differences in activity patterns between wwekdays and weekend?
 
