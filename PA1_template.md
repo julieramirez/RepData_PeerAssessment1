@@ -20,7 +20,7 @@ The dataset is stored in a comma-separated-value (CSV) file and there are a tota
 
 # Loading and preprocessing the data
 
-```{r loaddata, echo=TRUE, results='hide'}
+```r
 # load data
 
 url<-"https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
@@ -37,7 +37,7 @@ DatActivity$date<-as.Date(DatActivity$date)
 ```
 # What is mean total number of steps taken per day?
 
-```{r echo=TRUE, message=FALSE, warning=FALSE, results='hide'}
+```r
 # load library
 
 library(dplyr)
@@ -62,7 +62,7 @@ hist(Total.steps.day$total.steps,
      col = "blue")
 ```
 ![](figures/hist1.png) 
-```{r echo=TRUE, message=FALSE}
+```r
 # Mean and median of the total number of steps taken per day
 
 mean.steps<-mean(Total.steps.day$total.steps)
@@ -75,7 +75,7 @@ The mean of the total number of steps taken per day is `r mean.steps` and the me
 
 # What is the average daily activity pattern?
 
-```{r message=FALSE, warning=FALSE}
+```r
 # Average steps by interval
 
 DatActivity.by.interval<-group_by(DatActivity,interval)
@@ -89,7 +89,7 @@ plot(average.steps.by.interval$interval, average.steps.by.interval$average.steps
      main="Time Series plot of the 5 minutes interval and the average number \n of steps taken, averaged across all days")
 ```
 ![](figures/plot2.png) 
-```{r echo=TRUE, message=FALSE}
+```r
 # 5-minute interval contains the maximum number of steps
 
 max.step<-max(average.steps.by.interval$average.steps)
@@ -102,7 +102,7 @@ The interval with most steps is `r interval.max.step` , the max number of steps 
 
 # Imputing missing values
 
-```{r}
+```r
 
 # Total number of missing values in the dataset
 
@@ -112,7 +112,7 @@ total.na
 
 the total number of missing values in the data set is `r total.na`
 
-```{r,results='hide'}
+```r
 # Strategy for filling in all of the missing values in the dataset
 
 dimension<-dim(DatActivity)
@@ -131,7 +131,7 @@ for (i in 1:n) {
 
 ```
 
-```{r message=FALSE}
+```r
 # New data set with the missing data filled in
 
 DatActivity.fill<-DatActivity
@@ -158,7 +158,7 @@ legend("topright", c("Imputed", "Non-imputed"), col=c("green", "blue"), lwd=10)
 ![](figures/hist3.png)
 The histogram of the new data set with the missing data filled in is more symmetrical, and the variance is smaller.
 
-```{r}
+```r
 # Mean and median of the total number of steps taken per day
 
 mean.steps.fill<-mean(Total.steps.day.fill$total.steps)
@@ -171,7 +171,7 @@ The mean total number of steps taken per day is `r mean.steps.fill` and the medi
 
 # Are there differences in activity patterns between wwekdays and weekend?
 
-```{r}
+```r
 # New factor variable in the dataset with two levels "weekday" and "weekend"
 
 DatActivity.fill<-mutate(DatActivity.fill,week=weekdays(date))
