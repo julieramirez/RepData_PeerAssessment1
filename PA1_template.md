@@ -61,7 +61,7 @@ hist(Total.steps.day$total.steps,
      main = "Histogram of the total number of steps taken each day",
      col = "blue")
 ```
-
+![](figures/hist1.png) 
 ```{r echo=TRUE, message=FALSE}
 # Mean and median of the total number of steps taken per day
 
@@ -88,7 +88,7 @@ plot(average.steps.by.interval$interval, average.steps.by.interval$average.steps
      xlab = "5 minutes Interval", ylab = "Average Steps",
      main="Time Series plot of the 5 minutes interval and the average number \n of steps taken, averaged across all days")
 ```
-
+![](figures/plot2.png) 
 ```{r echo=TRUE, message=FALSE}
 # 5-minute interval contains the maximum number of steps
 
@@ -155,7 +155,7 @@ hist(Total.steps.day$total.steps,
 
 legend("topright", c("Imputed", "Non-imputed"), col=c("green", "blue"), lwd=10)
 ```
-
+![](figures/hist3.png)
 The histogram of the new data set with the missing data filled in is more symmetrical, and the variance is smaller.
 
 ```{r}
@@ -190,3 +190,4 @@ StepsTotalUnion <- aggregate(steps ~ interval + week, DatActivity.fill, mean)
 xyplot(StepsTotalUnion$steps ~ StepsTotalUnion$interval|StepsTotalUnion$week, main="Average Steps per Day by Interval",xlab="Interval", ylab="Steps",layout=c(1,2), type="l")
 
 ```
+![](figures/plot4.png)
